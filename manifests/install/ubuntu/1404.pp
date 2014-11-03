@@ -26,3 +26,4 @@ class ulimit::install::ubuntu::1404 (
       ulimit_item   => 'nofile',
       ulimit_value  => '10240';
   }
+}
