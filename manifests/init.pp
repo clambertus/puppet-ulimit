@@ -7,5 +7,8 @@ class ulimit (
   $purge        = $ulimit::params::purge
 ) inherits ulimit::params {
   include ulimit::config
+
+  class { "ulimit::install::${::asfosname}::${::asfosrelease}":
+  }
 }
 
