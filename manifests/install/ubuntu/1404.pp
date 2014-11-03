@@ -1,6 +1,13 @@
 class ulimit::install::ubuntu::1404 ( 
 ) { 
 
+  file { '/etc/security/limits.conf':
+    mode   => '0644',
+    owner  => 'root',
+    group  => 'root',
+    source => "puppet:///modules/ulimit/limits.${asfosname}-${asfosrelease}.conf",
+  }
+
   ulimit::rule {
     'root-soft-nofile':
       ulimit_domain => 'root',
