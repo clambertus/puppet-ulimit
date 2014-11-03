@@ -46,6 +46,7 @@
 # $ensure::         Default: present
 #
 define ulimit::rule (
+  $ulimit_name,
   $ulimit_domain,
   $ulimit_type,
   $ulimit_item,
@@ -60,7 +61,7 @@ define ulimit::rule (
   case $ensure {
     'present': {
       file {
-        "${::ulimit::config_dir}/${name}.conf":
+        "${::ulimit::config_dir}/${ulimit_name}.conf":
           ensure  => $ensure,
           content => template ('ulimit/rule.conf.erb');
       }
@@ -68,7 +69,7 @@ define ulimit::rule (
 
     'absent': {
       file {
-        "${::ulimit::config_dir}/${name}":
+        "${::ulimit::config_dir}/${ulimit_name}":
           ensure => $ensure;
       }
     }
