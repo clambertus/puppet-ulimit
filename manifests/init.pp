@@ -8,7 +8,8 @@ class ulimit (
 ) inherits ulimit::params {
   include ulimit::config
 
-  class { "ulimit::install::${::asfosname}::${::asfosrelease}":
-  }
+  # put all this in hiera
+  #class { "ulimit::install::${::asfosname}::${::asfosrelease}":
+  #}
 }
 
